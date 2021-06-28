@@ -18,4 +18,17 @@
       directory="static"
       />
 
+
+  <browser:page
+      name="tdf-controlpanel"
+      for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+      class=".controlpanel.TDFControlPanelView"
+      layer="rohberg.tuneddefaultfeatures.interfaces.IRohbergTuneddefaultfeaturesLayer"
+      permission="cmf.ManagePortal"
+      />
+
+  <adapter
+      factory="rohberg.tuneddefaultfeatures.browser.controlpanel.TDFControlPanel"
+      name="tdf-controlpanel" />
+
 </configure>
