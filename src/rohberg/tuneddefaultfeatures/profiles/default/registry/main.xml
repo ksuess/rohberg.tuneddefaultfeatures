@@ -5,4 +5,8 @@
 
 <!-- -*- extra stuff goes here -*- -->
 
+  <records
+      interface="rohberg.tuneddefaultfeatures.browser.controlpanel.ITDFControlPanel"
+      prefix="tdf" />
+
 </registry>

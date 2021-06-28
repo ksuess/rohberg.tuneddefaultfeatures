@@ -31,4 +31,13 @@
       factory="rohberg.tuneddefaultfeatures.browser.controlpanel.TDFControlPanel"
       name="tdf-controlpanel" />
 
+
+  <browser:page
+      name="sitemap.xml.gz"
+      for="plone.app.layout.navigation.interfaces.INavigationRoot"
+      class=".sitemap.SiteMapView"
+      layer="rohberg.tuneddefaultfeatures.interfaces.IRohbergTuneddefaultfeaturesLayer"
+      permission="zope2.Public"
+     />
+
 </configure>

@@ -4,6 +4,7 @@ from BTrees.OOBTree import OOBTree
 from gzip import GzipFile
 from plone.memoize import ram
 from plone.registry.interfaces import IRegistry
+from Products import AdvancedQuery
 from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone.interfaces import IPloneSiteRoot
 from Products.CMFPlone.interfaces import ISiteSchema
@@ -90,9 +91,15 @@ class SiteMapView(BrowserView):
         sitemappathstobeexcluded = api.portal.get_registry_record(name)
         print('sitemappathstobeexcluded', sitemappathstobeexcluded)
 
+        query = AdvancedQuery.Eq("path", path) & (AdvancedQuery.Eq("getMyIndexGetter1", "foo") | AdvancedQuery.Eq("getMyIndexGetter2", "bar"))
+
+        # The following result variable contains iterable of CatalogBrain objects
+        results = catalog.evalAdvancedQuery(query)
+
         for item in catalog.searchResults(query):
             loc = item.getURL()
             date = item.modified
+            print('item', loc)
             # Comparison must be on GMT value
             modified = (date.micros(), date.ISO8601())
             default_modified = default_page_modified.get(loc, None)
