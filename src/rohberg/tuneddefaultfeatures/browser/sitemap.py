@@ -85,21 +85,17 @@ class SiteMapView(BrowserView):
         query["is_default_page"] = False
 
         # Change: exclude path according controlpanel settings
-        # TODO
-
         name = 'tdf.sitemappathstobeexcluded'
         sitemappathstobeexcluded = api.portal.get_registry_record(name)
-        print('sitemappathstobeexcluded', sitemappathstobeexcluded)
 
-        query = AdvancedQuery.Eq("path", path) & (AdvancedQuery.Eq("getMyIndexGetter1", "foo") | AdvancedQuery.Eq("getMyIndexGetter2", "bar"))
-
-        # The following result variable contains iterable of CatalogBrain objects
+        query = AdvancedQuery.In("portal_type", utils.getUserFriendlyTypes()) & AdvancedQuery.Eq("is_default_page", False)
+        rootpath = '/'.join(api.portal.get().getPhysicalPath())
+        for pth in sitemappathstobeexcluded:
+            query = query & ~ AdvancedQuery.Eq('path', rootpath + pth)
         results = catalog.evalAdvancedQuery(query)
-
-        for item in catalog.searchResults(query):
+        for item in results:
             loc = item.getURL()
             date = item.modified
-            print('item', loc)
             # Comparison must be on GMT value
             modified = (date.micros(), date.ISO8601())
             default_modified = default_page_modified.get(loc, None)
@@ -116,12 +112,10 @@ class SiteMapView(BrowserView):
                 # 'prioriy': 0.5, # 0.0 to 1.0
             }
 
-    # TODO uncomment cache stuff
-    # @ram.cache(_render_cachekey)
+    @ram.cache(_render_cachekey)
     def generate(self):
         """Generates the Gzipped sitemap."""
         xml = self.template()
-        print('generate sitemap.xml.gz')
         fp = BytesIO()
         gzip = GzipFile(self.filename, "wb", 9, fp)
         if isinstance(xml, six.text_type):
