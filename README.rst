@@ -2,25 +2,11 @@
 rohberg.tuneddefaultfeatures
 ============================
 
-Tell me what your product does
-
 Features
 --------
 
 - sitemap.xml.gz: controlpanel settings to exclude paths
 
-
-Examples
---------
-
-This add-on can be seen in action at the following sites:
-- Is there a page on the internet where everybody can see the features?
-
-
-Documentation
--------------
-
-Full documentation for end users can be found in the "docs" folder, and is also available online at http://docs.plone.org/foo/bar
 
 
 Translations
