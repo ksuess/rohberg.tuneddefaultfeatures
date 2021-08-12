@@ -18,7 +18,7 @@ from zope.interface import Interface
 class ITDFControlPanel(Interface):
 
     sitemappathstobeexcluded = schema.List(
-        title='Sitemap paths to be excluded',
+        title='Sitemap paths to be excluded (/sitemap.xml.gz)',
         default=[],
         missing_value=[],
         required=False,

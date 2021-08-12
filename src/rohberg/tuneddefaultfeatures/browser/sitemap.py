@@ -16,6 +16,8 @@ from zope.publisher.interfaces import NotFound
 
 import six
 
+import logging
+logger = logging.getLogger(__name__)
 
 def _render_cachekey(fun, self):
     # Cache by filename
@@ -93,6 +95,7 @@ class SiteMapView(BrowserView):
         for pth in sitemappathstobeexcluded:
             query = query & ~ AdvancedQuery.Eq('path', rootpath + pth)
         results = catalog.evalAdvancedQuery(query)
+        # logger.info(f'rootpath: {rootpath} query: {query}')
         for item in results:
             loc = item.getURL()
             date = item.modified
