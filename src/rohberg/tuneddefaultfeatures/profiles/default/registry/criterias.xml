@@ -1,7 +1,34 @@
 <?xml version="1.0"?>
 <registry xmlns:i18n="http://xml.zope.org/namespaces/i18n"
           i18n:domain="plone">
+<!-- Querying for Subject field: Add new criteria that allows to exclude Subjects -->
+
   <!-- -*- extra stuff goes here -*- -->
 
+<!-- Operation Definitions -->
+    <records interface="plone.app.querystring.interfaces.IQueryOperation"
+             prefix="plone.app.querystring.operation.selection.exclude">
+        <value key="title" i18n:translate="">Matches none of</value>
+        <value key="description" i18n:translate="">Tip: you can use * to autocomplete.</value>
+        <value key="operation">rohberg.tuneddefaultfeatures.querystring.queryparser._exclude</value>
+        <value key="widget">MultipleSelectionWidget</value>
+    </records>
+
+
+<!-- QueryField declarations  -->
+    <records interface="plone.app.querystring.interfaces.IQueryField"
+             prefix="plone.app.querystring.field.Subject">
+        <value key="title" i18n:translate="">Tag</value>
+        <value key="description" i18n:translate="">Tags are used for organization of content</value>
+        <value key="enabled">True</value>
+        <value key="sortable">False</value>
+        <value key="operations">
+            <element>plone.app.querystring.operation.selection.any</element>
+            <element>plone.app.querystring.operation.selection.all</element>
+            <element>plone.app.querystring.operation.selection.exclude</element>
+        </value>
+       <value key="vocabulary">plone.app.vocabularies.Keywords</value>
+       <value key="group" i18n:translate="">Text</value>
+    </records>
 
 </registry>
