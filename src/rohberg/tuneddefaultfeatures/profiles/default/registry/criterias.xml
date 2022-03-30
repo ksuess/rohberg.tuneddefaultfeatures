@@ -16,7 +16,7 @@
 
 
 <!-- QueryField declarations  -->
-    <records interface="plone.app.querystring.interfaces.IQueryField"
+    <!-- <records interface="plone.app.querystring.interfaces.IQueryField"
              prefix="plone.app.querystring.field.Subject">
         <value key="title" i18n:translate="">Tag</value>
         <value key="description" i18n:translate="">Tags are used for organization of content</value>
@@ -29,6 +29,6 @@
         </value>
        <value key="vocabulary">plone.app.vocabularies.Keywords</value>
        <value key="group" i18n:translate="">Text</value>
-    </records>
+    </records> -->
 
 </registry>
