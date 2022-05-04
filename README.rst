@@ -6,8 +6,6 @@ Features
 --------
 
 - sitemap.xml.gz: controlpanel settings to exclude paths
-- exclude query parameter for collections and listings
-- plone.app.discussion: Mark comments as spam by stop words. Prevent moderator notification.
 
 
 

@@ -17,7 +17,6 @@
   <include package=".querystring" />
 
   <include file="permissions.zcml" />
-  <include file="notifications.zcml" />
 
   <genericsetup:registerProfile
       name="default"

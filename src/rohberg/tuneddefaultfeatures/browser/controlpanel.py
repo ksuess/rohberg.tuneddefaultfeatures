@@ -1,8 +1,8 @@
-from plone.app.discussion import _ as _pad
 from plone.app.registry.browser.controlpanel import (
     ControlPanelFormWrapper,
     RegistryEditForm,
 )
+from plone.autoform import directives
 from plone.restapi.controlpanels import RegistryConfigletPanel
 from plone.z3cform import layout
 from plone import schema
@@ -25,27 +25,6 @@ class ITDFControlPanel(Interface):
         value_type=schema.TextLine(),
     )
 
-    moderator_notification_enabled = schema.Bool(
-        title=_pad(
-            "label_moderator_notification_enabled",
-            default="Enable moderator email notification",
-        ),
-        description=_pad(
-            "help_moderator_notification_enabled",
-            default="If selected, the moderator is notified if a comment "
-            "needs attention. The moderator email address can "
-            "be set below.",
-        ),
-        required=False,
-        default=False,
-    )
-    stopwords = schema.List(
-        title='Stop words which mark email as spam',
-        default=[],
-        missing_value=[],
-        required=False,
-        value_type=schema.TextLine(),
-    )
 
 
 @adapter(Interface, Interface)
