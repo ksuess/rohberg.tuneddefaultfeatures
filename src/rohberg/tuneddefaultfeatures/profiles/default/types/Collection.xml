@@ -4,4 +4,11 @@
   <property name="view_methods" purge="false">
     <element value="tabular_view_plus"/>
   </property>
+
+  <property name="behaviors" purge="false">
+    <element value="rohberg.tuneddefaultfeatures.collection_message_domain"/>
+  </property>
+  
+
+
 </object>
