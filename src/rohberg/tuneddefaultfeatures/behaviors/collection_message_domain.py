@@ -15,13 +15,13 @@ class ICollectionMessageDomainMarker(Interface):
 
 @provider(IFormFieldProvider)
 class ICollectionMessageDomain(model.Schema):
-    """
-    """
+    """ """
 
-    project = schema.TextLine(
-        title=_(u'Project'),
-        description=_(u'Give in a project name'),
+    message_factory_domain = schema.TextLine(
+        title=_("message_factory_domain"),
+        description=_("Give in a message factory domain name"),
         required=False,
+        default="plone",
     )
 
 
@@ -32,11 +32,11 @@ class CollectionMessageDomain(object):
         self.context = context
 
     @property
-    def project(self):
-        if safe_hasattr(self.context, 'project'):
-            return self.context.project
+    def message_factory_domain(self):
+        if safe_hasattr(self.context, "message_factory_domain"):
+            return self.context.message_factory_domain
         return None
 
-    @project.setter
-    def project(self, value):
-        self.context.project = value
+    @message_factory_domain.setter
+    def message_factory_domain(self, value):
+        self.context.message_factory_domain = value
