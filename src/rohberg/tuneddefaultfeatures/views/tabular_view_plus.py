@@ -4,9 +4,12 @@
 from plone.app.contenttypes.browser.collection import CollectionView
 from Products.CMFPlone.utils import safe_callable
 from zope.interface import Interface
-
+from zope.i18nmessageid import MessageFactory
 
 # from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
+
+
+_ = MessageFactory("plone")
 
 
 class ITabularViewPlus(Interface):
@@ -19,6 +22,7 @@ class TabularViewPlus(CollectionView):
     # template = ViewPageTemplateFile('tabular_view_plus.pt')
 
     def tabular_fielddata_plus(self, item, fieldname):
+        print("item", item)
         value = getattr(item, fieldname, "")
         if safe_callable(value):
             value = value()
@@ -38,10 +42,7 @@ class TabularViewPlus(CollectionView):
         ]:
             value = self.toLocalizedTime(value, long_format=1)
 
-        return {
-            # 'title': _(fieldname, default=fieldname),
-            "value": value
-        }
+        return {"title": _(fieldname, default=fieldname), "value": value}
 
     def __call__(self):
         # Implement your own actions:
