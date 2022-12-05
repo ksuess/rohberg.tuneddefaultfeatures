@@ -2,6 +2,7 @@
 
 # from rohberg.tuneddefaultfeatures import _
 from plone.app.contenttypes.browser.collection import CollectionView
+from Products.CMFPlone.utils import safe_callable
 from zope.interface import Interface
 
 
@@ -17,7 +18,7 @@ class TabularViewPlus(CollectionView):
     # the configure.zcml registration of this view.
     # template = ViewPageTemplateFile('tabular_view_plus.pt')
 
-    def tabular_fielddata(self, item, fieldname):
+    def tabular_fielddata_plus(self, item, fieldname):
         value = getattr(item, fieldname, "")
         if safe_callable(value):
             value = value()
