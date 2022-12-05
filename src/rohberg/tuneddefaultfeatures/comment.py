@@ -9,18 +9,18 @@ from plone.api.exc import InvalidParameterError
 from plone.app.discussion import _
 from plone.app.discussion.comment import MAIL_NOTIFICATION_MESSAGE_MODERATOR
 from plone.app.discussion.interfaces import IDiscussionSettings
-from Products.CMFPlone.interfaces.controlpanel import IMailSchema
-from Products.CMFPlone.utils import safe_unicode
 from plone.registry.interfaces import IRegistry
 from Products.CMFCore.utils import getToolByName
+from Products.CMFPlone.interfaces.controlpanel import IMailSchema
+from Products.CMFPlone.utils import safe_unicode
 from smtplib import SMTPException
-from zope.component import getUtility
-from zope.component import queryUtility
+from zope.component import getUtility, queryUtility
 from zope.i18n import translate
 from zope.i18nmessageid import Message
 
-
 import logging
+
+
 logger = logging.getLogger("rohberg.tuneddefaultfeatures")
 
 

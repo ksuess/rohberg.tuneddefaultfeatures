@@ -1,0 +1,18 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    i18n_domain="rohberg.tuneddefaultfeatures">
+
+ <!-- -*- extra stuff goes here -*- -->
+
+  <browser:page
+    name="tabular_view_plus"
+    for="plone.app.contenttypes.interfaces.ICollection"
+    class=".tabular_view_plus.TabularViewPlus"
+    template="tabular_view_plus.pt"
+    permission="zope2.View"
+    layer="rohberg.tuneddefaultfeatures.interfaces.IRohbergTuneddefaultfeaturesLayer"
+    />
+
+</configure>

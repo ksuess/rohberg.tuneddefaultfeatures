@@ -1,3 +1,4 @@
+from plone import schema
 from plone.app.discussion import _ as _pad
 from plone.app.registry.browser.controlpanel import (
     ControlPanelFormWrapper,
@@ -5,7 +6,6 @@ from plone.app.registry.browser.controlpanel import (
 )
 from plone.restapi.controlpanels import RegistryConfigletPanel
 from plone.z3cform import layout
-from plone import schema
 from zope.component import adapter
 from zope.interface import Interface
 

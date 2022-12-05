@@ -3,7 +3,7 @@
 from plone import api
 from plone.app.testing import setRoles, TEST_USER_ID
 from rohberg.tuneddefaultfeatures.testing import (
-    ROHBERG_TUNEDDEFAULTFEATURES_INTEGRATION_TESTING  # noqa: E501,
+    ROHBERG_TUNEDDEFAULTFEATURES_INTEGRATION_TESTING  # noqa: E501,,
 )
 
 import unittest

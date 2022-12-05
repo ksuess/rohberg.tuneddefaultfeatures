@@ -1,22 +1,22 @@
 # -*- coding: utf-8 -*-
-from plone import api
 from BTrees.OOBTree import OOBTree
 from gzip import GzipFile
+from plone import api
 from plone.memoize import ram
 from plone.registry.interfaces import IRegistry
 from Products import AdvancedQuery
 from Products.CMFCore.utils import getToolByName
-from Products.CMFPlone.interfaces import IPloneSiteRoot
-from Products.CMFPlone.interfaces import ISiteSchema
+from Products.CMFPlone.interfaces import IPloneSiteRoot, ISiteSchema
 from Products.Five import BrowserView
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from six import BytesIO
 from zope.component import getUtility
 from zope.publisher.interfaces import NotFound
 
+import logging
 import six
 
-import logging
+
 logger = logging.getLogger(__name__)
 
 def _render_cachekey(fun, self):
