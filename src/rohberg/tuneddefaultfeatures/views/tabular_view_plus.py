@@ -9,13 +9,38 @@ from zope.interface import Interface
 
 
 class ITabularViewPlus(Interface):
-    """ Marker Interface for ITabularViewPlus"""
+    """Marker Interface for ITabularViewPlus"""
 
 
 class TabularViewPlus(CollectionView):
     # If you want to define a template here, please remove the template from
     # the configure.zcml registration of this view.
     # template = ViewPageTemplateFile('tabular_view_plus.pt')
+
+    def tabular_fielddata(self, item, fieldname):
+        value = getattr(item, fieldname, "")
+        if safe_callable(value):
+            value = value()
+        if fieldname in [
+            "CreationDate",
+            "ModificationDate",
+            "Date",
+            "EffectiveDate",
+            "ExpirationDate",
+            "effective",
+            "expires",
+            "start",
+            "end",
+            "created",
+            "modified",
+            "last_comment_date",
+        ]:
+            value = self.toLocalizedTime(value, long_format=1)
+
+        return {
+            # 'title': _(fieldname, default=fieldname),
+            "value": value
+        }
 
     def __call__(self):
         # Implement your own actions:
