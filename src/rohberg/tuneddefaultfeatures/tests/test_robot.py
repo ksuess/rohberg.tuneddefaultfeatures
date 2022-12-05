@@ -2,7 +2,7 @@
 from plone.app.testing import ROBOT_TEST_LEVEL
 from plone.testing import layered
 from rohberg.tuneddefaultfeatures.testing import (
-    ROHBERG_TUNEDDEFAULTFEATURES_ACCEPTANCE_TESTING  # noqa: E501,,
+    ROHBERG_TUNEDDEFAULTFEATURES_ACCEPTANCE_TESTING  # noqa: E501,,,
 )
 
 import os

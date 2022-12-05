@@ -3,8 +3,9 @@
 # from rohberg.tuneddefaultfeatures import _
 from plone.app.contenttypes.browser.collection import CollectionView
 from Products.CMFPlone.utils import safe_callable
-from zope.interface import Interface
 from zope.i18nmessageid import MessageFactory
+from zope.interface import Interface
+
 
 # from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
