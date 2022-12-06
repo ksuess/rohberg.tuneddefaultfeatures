@@ -1,6 +1,18 @@
 <configure
     xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
     i18n_domain="plone">
+
+    <browser:page
+        name="tabular_view"
+        for="plone.app.contenttypes.behaviors.collection.ISyndicatableCollection"
+        class=".views.tabular_view_plus.TabularViewPlus"
+        template="./views/tabular_view_plus.pt"
+        permission="zope2.View"
+        layer="rohberg.tuneddefaultfeatures.interfaces.IRohbergTuneddefaultfeaturesLayer"
+        menu="plone_displayviews"
+        title="Tabular view"
+        />
 
     <utility
         factory=".querystring.query_index_modifiers.Subject"

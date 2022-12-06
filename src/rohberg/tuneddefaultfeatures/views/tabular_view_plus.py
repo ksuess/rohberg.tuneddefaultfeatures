@@ -22,10 +22,6 @@ class ITabularViewPlus(Interface):
 
 
 class TabularViewPlus(CollectionView):
-    # If you want to define a template here, please remove the template from
-    # the configure.zcml registration of this view.
-    # template = ViewPageTemplateFile('tabular_view_plus.pt')
-
     def __init__(self, context, request):
         super(TabularViewPlus, self).__init__(context, request)
         self.message_factory_domain = self.context.message_factory_domain or "plone"
