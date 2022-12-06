@@ -1,18 +1,14 @@
 # -*- coding: utf-8 -*-
 
 # from rohberg.tuneddefaultfeatures import _
-from plone import api
 from plone.app.contenttypes.browser.collection import CollectionView
 from plone.app.vocabularies.metadatafields import get_field_label
-from Products.CMFPlone.utils import safe_callable
-from zope.i18nmessageid import MessageFactory
-from zope.interface import Interface
-from zope.component import getMultiAdapter
 from plone.dexterity.utils import iterSchemata
-from z3c.form.interfaces import IDataManager
 from plone.restapi.interfaces import IFieldSerializer
+from Products.CMFPlone.utils import safe_callable
 from z3c.relationfield.interfaces import IRelationValue
-
+from zope.component import getMultiAdapter
+from zope.interface import Interface
 
 # from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
@@ -22,6 +18,8 @@ class ITabularViewPlus(Interface):
 
 
 class TabularViewPlus(CollectionView):
+    """Translate column headers. Transform values with field vocabularies"""
+
     def __init__(self, context, request):
         super(TabularViewPlus, self).__init__(context, request)
         self.message_factory_domain = self.context.message_factory_domain or "plone"
@@ -42,13 +40,11 @@ class TabularViewPlus(CollectionView):
             if fieldname in schema:
                 field = schema.get(fieldname)
                 break
-        print("field", field)
-        dm = getMultiAdapter((type_object, field), IDataManager)
-        dm.set(value)
+        # dm = getMultiAdapter((type_object, field), IDataManager)
+        # dm.set(value)
         serializer = getMultiAdapter(
             (field, type_object, self.request), IFieldSerializer
         )
-        print("serializer", serializer)
         return serializer()
 
     def tabular_fielddata_plus(self, item, fieldname):
@@ -73,7 +69,6 @@ class TabularViewPlus(CollectionView):
             value = self.toLocalizedTime(value, long_format=1)
         else:
             type_object = item.getObject()
-            print("type_object", type_object)
             if IRelationValue.providedBy(value):
                 value = value.to_object.title
             elif isinstance(value, list):
