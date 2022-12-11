@@ -36,12 +36,15 @@ class TabularViewPlus(CollectionView):
         return fieldname_translated
 
     def serialize(self, fieldname, value, type_object):
+        field = None
         for schema in iterSchemata(type_object):
             if fieldname in schema:
                 field = schema.get(fieldname)
                 break
         # dm = getMultiAdapter((type_object, field), IDataManager)
         # dm.set(value)
+        if not field:
+            return "Dieses Feld gibts hier nicht."
         serializer = getMultiAdapter(
             (field, type_object, self.request), IFieldSerializer
         )
