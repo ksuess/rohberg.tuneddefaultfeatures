@@ -6,13 +6,13 @@
   <!-- -*- extra stuff goes here -*- -->
 
 <!-- Operation Definitions -->
-    <records interface="plone.app.querystring.interfaces.IQueryOperation"
+    <!-- <records interface="plone.app.querystring.interfaces.IQueryOperation"
              prefix="plone.app.querystring.operation.selection.exclude">
         <value key="title" i18n:translate="">Matches none of</value>
         <value key="description" i18n:translate="">Tip: you can use * to autocomplete.</value>
         <value key="operation">rohberg.tuneddefaultfeatures.querystring.queryparser._exclude</value>
         <value key="widget">MultipleSelectionWidget</value>
-    </records>
+    </records> -->
 
 
 <!-- QueryField declarations  -->
