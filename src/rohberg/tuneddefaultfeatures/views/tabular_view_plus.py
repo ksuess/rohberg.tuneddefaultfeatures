@@ -102,7 +102,7 @@ class TabularViewPlus(CollectionView):
                     elif isinstance(value[0], dict):
                         new_value = []
                         for el in value:
-                            new_value.append(el["title"])
+                            new_value.append(el["title"] or el["token"])
                         value = new_value
                     else:
                         new_value = []
