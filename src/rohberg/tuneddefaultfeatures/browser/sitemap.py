@@ -19,6 +19,7 @@ import six
 
 logger = logging.getLogger(__name__)
 
+
 def _render_cachekey(fun, self):
     # Cache by filename
     mtool = getToolByName(self.context, "portal_membership")
@@ -88,14 +89,18 @@ class SiteMapView(BrowserView):
 
         # Change: exclude path according controlpanel settings
         name = 'tdf.sitemappathstobeexcluded'
-        sitemappathstobeexcluded = api.portal.get_registry_record(name)
+        sitemappathstobeexcluded = api.portal.get_registry_record(name, default=None)
+        
+        if sitemappathstobeexcluded:
+            query = AdvancedQuery.In("portal_type", utils.getUserFriendlyTypes()) & AdvancedQuery.Eq("is_default_page", False)
+            rootpath = '/'.join(api.portal.get().getPhysicalPath())
+            for pth in sitemappathstobeexcluded:
+                query = query & ~ AdvancedQuery.Eq('path', rootpath + pth)
+            results = catalog.evalAdvancedQuery(query)
+            logger.info(f'rootpath: {rootpath} query: {query}')
+        else:
+            results = catalog.searchResults(query)
 
-        query = AdvancedQuery.In("portal_type", utils.getUserFriendlyTypes()) & AdvancedQuery.Eq("is_default_page", False)
-        rootpath = '/'.join(api.portal.get().getPhysicalPath())
-        for pth in sitemappathstobeexcluded:
-            query = query & ~ AdvancedQuery.Eq('path', rootpath + pth)
-        results = catalog.evalAdvancedQuery(query)
-        # logger.info(f'rootpath: {rootpath} query: {query}')
         for item in results:
             loc = item.getURL()
             date = item.modified
@@ -121,6 +126,7 @@ class SiteMapView(BrowserView):
         xml = self.template()
         fp = BytesIO()
         gzip = GzipFile(self.filename, "wb", 9, fp)
+        print("isinstance(xml, six.text_type)", isinstance(xml, six.text_type))
         if isinstance(xml, six.text_type):
             xml = xml.encode("utf8")
         gzip.write(xml)
