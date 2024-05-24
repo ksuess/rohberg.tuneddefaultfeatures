@@ -40,4 +40,12 @@
       permission="zope2.Public"
      />
 
+
+  <browser:page
+      for="*"
+      name="contact-info"
+      class=".contact_info.ContactFormCustom"
+      layer="rohberg.tuneddefaultfeatures.interfaces.IRohbergTuneddefaultfeaturesLayer"
+      permission="zope.Public"
+      />
 </configure>

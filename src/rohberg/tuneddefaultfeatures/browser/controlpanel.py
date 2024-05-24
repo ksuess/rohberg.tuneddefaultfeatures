@@ -47,6 +47,15 @@ class ITDFControlPanel(Interface):
         value_type=schema.TextLine(),
     )
 
+    exclude_default_contact_form = schema.Bool(
+        title=_pad(
+            "label_exclude_default_contact_form",
+            default="Disable default contact form /contact-info",
+        ),
+        required=False,
+        default=False,
+    )
+
 
 @adapter(Interface, Interface)
 class TDFControlPanel(RegistryConfigletPanel):
