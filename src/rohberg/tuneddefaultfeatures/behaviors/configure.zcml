@@ -10,6 +10,16 @@
     <!-- -*- extra stuff goes here -*- -->
 
     <plone:behavior
+        name="rohberg.tuneddefaultfeatures.information_type"
+        title="InformationType"
+        description="Add field informationtype"
+        provides=".information_type.IInformationType"
+        factory=".information_type.InformationType"
+        marker=".information_type.IInformationTypeMarker"
+        />
+
+
+    <plone:behavior
         name="rohberg.tuneddefaultfeatures.collection_message_domain"
         title="CollectionMessageDomain"
         description="This behavior provides..."
