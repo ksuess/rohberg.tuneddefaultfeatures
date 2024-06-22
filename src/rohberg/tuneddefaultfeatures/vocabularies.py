@@ -6,7 +6,7 @@ from zope.schema.vocabulary import SimpleVocabulary
 
 @provider(IVocabularyFactory)
 def InformationtypeVocabularyFactory(context):
-    name = "rohberg.tuneddefaultfeatures.informationtype"
+    name = "tdf.informationtype"
     registry_record_value = api.portal.get_registry_record(name)
     items = registry_record_value.get("items", [])
     lang = api.portal.get_current_language()

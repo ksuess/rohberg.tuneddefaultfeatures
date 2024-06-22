@@ -48,7 +48,7 @@
   <include package=".views" />
 
   <utility
-    name="igib.igibmanualinformationtype"
+    name="rohberg.tuneddefaultfeatures.informationtype"
     component="rohberg.tuneddefaultfeatures.vocabularies.InformationtypeVocabularyFactory" />
 
 </configure>
