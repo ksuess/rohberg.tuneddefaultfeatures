@@ -1,4 +1,9 @@
 <?xml version="1.0"?>
 <object name="portal_catalog">
   <column value="message_factory_domain"/>
+
+  <index name="informationtype" meta_type="KeywordIndex">
+    <indexed_attr value="informationtype"/>
+  </index>
+  <column value="informationtype"/>
 </object>

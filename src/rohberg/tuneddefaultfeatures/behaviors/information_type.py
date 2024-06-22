@@ -18,9 +18,9 @@ class IInformationType(model.Schema):
     """
     """
 
-    project = schema.TextLine(
-        title=_(u'Project'),
-        description=_(u'Give in a project name'),
+    informationtype = schema.List(
+        title=_("informationtype"),
+        value_type=schema.Choice(vocabulary="rohberg.tuneddefaultfeatures.informationtype"),
         required=False,
     )
 
@@ -32,11 +32,11 @@ class InformationType(object):
         self.context = context
 
     @property
-    def project(self):
-        if safe_hasattr(self.context, 'project'):
-            return self.context.project
+    def informationtype(self):
+        if safe_hasattr(self.context, 'informationtype'):
+            return self.context.informationtype
         return None
 
-    @project.setter
-    def project(self, value):
-        self.context.project = value
+    @informationtype.setter
+    def informationtype(self, value):
+        self.context.informationtype = value

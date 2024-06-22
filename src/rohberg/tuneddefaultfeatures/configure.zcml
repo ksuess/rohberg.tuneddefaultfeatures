@@ -44,10 +44,11 @@
   <!-- -*- extra stuff goes here -*- -->
 
   <include package=".upgrades" />
-
-    <include package=".behaviors" />
-
-
+  <include package=".behaviors" />
   <include package=".views" />
+
+  <utility
+    name="igib.igibmanualinformationtype"
+    component="rohberg.tuneddefaultfeatures.vocabularies.InformationtypeVocabularyFactory" />
 
 </configure>

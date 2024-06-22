@@ -10,6 +10,34 @@ from zope.component import adapter
 from zope.interface import Interface
 
 
+import json
+
+
+VOCABULARY_SCHEMA = json.dumps(
+    {
+        "type": "object",
+        "properties": {
+            "items": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "token": {"type": "string"},
+                        "titles": {
+                            "type": "object",
+                            "properties": {
+                                "lang": {"type": "string"},
+                                "title": {"type": "string"},
+                            },
+                        },
+                    },
+                },
+            }
+        },
+    }
+)
+
+
 # class IVocabularyItem(Interface):
 #     vocabularyItemToken = schema.TextLine(title="vocabulary item token", description="Bitte keine Umlaute, Satzzeichen oder Leerzeichen im token bitte.", required=True)
 #     vocabularyItemValue = schema.TextLine(title="vocabulary item value", required=False)
@@ -54,6 +82,25 @@ class ITDFControlPanel(Interface):
         ),
         required=False,
         default=False,
+    )
+
+    informationtype = schema.JSONField(
+        title="informationtype",
+        required=False,
+        schema=VOCABULARY_SCHEMA,
+        widget="vocabularyterms",
+        default={
+            "items": [
+                {
+                    "token": "manual",
+                    "titles": {
+                        "en": "Manual",
+                        "de": "Anleitung",
+                    },
+                },
+            ]
+        },
+        missing_value={"items": []},
     )
 
 
