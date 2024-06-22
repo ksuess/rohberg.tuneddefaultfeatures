@@ -2,8 +2,8 @@
 from plone import api
 from Products.CMFPlone import PloneMessageFactory as _pmf
 from Products.CMFPlone.browser.contact_info import ContactForm
-from zope.i18n import translate
 from zope.globalrequest import getRequest
+from zope.i18n import translate
 
 
 class ContactFormCustom(ContactForm):

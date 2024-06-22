@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
-from plone.app.testing import setRoles
-from plone.app.testing import TEST_USER_ID
+from plone.app.testing import setRoles, TEST_USER_ID
 # from rohberg.tuneddefaultfeatures.testing import ROHBERG_TUNEDDEFAULTFEATURES_FUNCTIONAL_TESTING
-from rohberg.tuneddefaultfeatures.testing import ROHBERG_TUNEDDEFAULTFEATURES_INTEGRATION_TESTING
+from rohberg.tuneddefaultfeatures.testing import (
+    ROHBERG_TUNEDDEFAULTFEATURES_INTEGRATION_TESTING,
+)
 
 import unittest
 

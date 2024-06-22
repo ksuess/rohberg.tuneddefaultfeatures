@@ -5,7 +5,7 @@ from rohberg.tuneddefaultfeatures.behaviors.collection_message_domain import (
     ICollectionMessageDomainMarker,
 )
 from rohberg.tuneddefaultfeatures.testing import (
-    ROHBERG_TUNEDDEFAULTFEATURES_INTEGRATION_TESTING  # noqa,
+    ROHBERG_TUNEDDEFAULTFEATURES_INTEGRATION_TESTING  # noqa,,
 )
 from zope.component import getUtility
 
