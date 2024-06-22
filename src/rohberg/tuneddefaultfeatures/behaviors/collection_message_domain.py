@@ -19,7 +19,7 @@ class ICollectionMessageDomain(model.Schema):
 
     message_factory_domain = schema.TextLine(
         title=_("message_factory_domain"),
-        description=_("Give in a message factory domain name"),
+        description=_("Type in a message factory domain name"),
         required=False,
         default="plone",
     )
