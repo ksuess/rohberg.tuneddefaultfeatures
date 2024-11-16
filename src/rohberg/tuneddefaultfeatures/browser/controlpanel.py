@@ -96,6 +96,7 @@ class ITDFControlPanel(Interface):
                     "titles": {
                         "en": "Manual",
                         "de": "Anleitung",
+                        "it": "Istruzioni"
                     },
                 },
             ]
