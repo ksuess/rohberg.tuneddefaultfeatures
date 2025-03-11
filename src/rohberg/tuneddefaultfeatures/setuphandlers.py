@@ -10,6 +10,8 @@ class HiddenProfiles(object):
         """Hide uninstall profile from site-creation and quickinstaller."""
         return [
             'rohberg.tuneddefaultfeatures:uninstall',
+            'rohberg.tuneddefaultfeatures.upgrades:1001',
+            'rohberg.tuneddefaultfeatures.upgrades:1002',
         ]
 
 
